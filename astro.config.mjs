@@ -6,6 +6,6 @@ import svelte from "@astrojs/svelte";
 // https://astro.build/config
 export default defineConfig({
   integrations: [svelte()],
-  site: 'https://astronaut.github.io',
+  site: 'https://tannerhansen.github.io',
   base: '/portfolio',
 });
