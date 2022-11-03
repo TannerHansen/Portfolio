@@ -7,7 +7,7 @@ import ThemeIcon from "./ThemeIcon.astro";
 <header>
     <div id="left-items">
         <!-- <Hamburger /> -->
-        <img id="hamburger" src="/icons/hamburger.svg" />
+        <img id="hamburger" src={`${import.meta.env.BASE_URL}icons/hamburger.svg`} />
         <ThemeIcon />
     </div>
     <h1>Portfolio</h1>
