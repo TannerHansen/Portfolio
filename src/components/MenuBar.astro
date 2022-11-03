@@ -1,0 +1,39 @@
+---
+import Hamburger from "./Hamburger.astro";
+import Social from "./Social.astro";
+import ThemeIcon from "./ThemeIcon.astro";
+---
+
+<header>
+    <div id="left-items">
+        <!-- <Hamburger /> -->
+        <img id="hamburger" src="/icons/hamburger.svg" />
+        <ThemeIcon />
+    </div>
+    <h1>Portfolio</h1>
+    <Social href="https://www.github.com/TannerHansen" platform="GitHub" />
+</header>
+
+<style>
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 5px;
+    }
+
+    #left-items {
+        display: flex;
+        margin: 0 5px;
+    }
+
+    #left-items * {
+        padding: 0 8px;
+    }
+
+    h1 {
+        flex: 1;
+        margin: 0;
+        text-align: center;
+    }
+</style>

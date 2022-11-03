@@ -1,10 +1,19 @@
 ---
 import Social from './Social.astro';
+import '../styles/variables.css';
+
+if (typeof(counter) !== 'undefined') {
+    counter += 1;
+} else {
+    var counter = 0;
+}
+console.log(counter);
+
 ---
 
 <footer>
-    <Social platform="github" username="TannerHansen" />
-    <Social platform="youtube" username="BareTuna" />
+    <Social platform="GitHub" href="https://www.github.com/TannerHansen" />
+    <Social platform="YouTube" href="https://youtube.com/@BareTuna" />
 </footer>
 
 <style>
@@ -12,5 +21,6 @@ import Social from './Social.astro';
         display: flex;
         gap: 1rem;
         margin-top: 2rem;
+        background-color: var(--bg);
     }
 </style>

@@ -1,29 +1,60 @@
 ---
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
 import "../styles/global.css";
-const { pageTitle } = Astro.props;
+
+import MenuBar from "../components/MenuBar.astro";
+import Footer from "../components/Footer.astro";
+import Navigation from "../components/Navigation.astro";
+const { pageTitle, pageDescription } = Astro.props;
 ---
 
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-        <meta name="viewport" content="width=device-width" />
-        <meta name="generator" content={Astro.generator} />
-        <title>{pageTitle}</title>
-    </head>
-    <body>
-        <Header />
-        <h1>{pageTitle}</h1>
-        <!-- 
-		<h2>ok i wanna figure out what this is -&gt; {Astro.site}</h2>
-		<p>BASE_URL: {import.meta.env.BASE_URL}</p>
-        -->
+<html lang="en" class="tuna-light">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    {pageDescription && <meta name="description" content={pageDescription} />}
+    <title>{pageTitle} | Tanner's Portfolio</title>
+    <script src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <!-- Set theme before page load -->
+    <script type="text/javascript">
+      var defaultTheme = window.matchMedia("(prefers-color-scheme: dark)")
+        .matches
+        ? "tuna-dark"
+        : "tuna-light";
+      var theme;
+      try {
+        theme = localStorage.getItem("theme");
+      } catch (e) {}
+      if (theme === null || theme === undefined) {
+        theme = defaultTheme;
+      }
+      var html = document.querySelector("html");
+      html.classList.remove("tuna-light");
+      html.classList.add(theme);
+    </script>
+
+    <!-- Sidebar / Navigation -->
+    <Navigation />
+
+    <div style="margin-left: var(--sidebar-width)" class="page-wrapper">
+      <!-- Menu Bar -->
+      <MenuBar />
+
+      <!-- Content -->
+      <main>
+        <!-- <h1>{pageTitle}</h1> -->
         <slot />
-        <Footer />
-        <script>
-            import "../scripts/menu.js";
-        </script>
-    </body>
+      </main>
+
+      <!-- Footer -->
+      <Footer />
+    </div>
+
+    <script>
+      import "../scripts/menu.js";
+    </script>
+  </body>
 </html>

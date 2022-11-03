@@ -1,94 +1,70 @@
+@import './variables.css';
+
+:root {
+    /* Makes 1 rem = 10px rather than 16px */
+    font-size: 62.5%;
+}
+
 html {
-    background-color: #f1f5f9;
-    font-family: sans-serif;
+    font-family: "Open Sans", sans-serif;
+    color: var(--fg);
+    background-color: var(--bg);
 }
 
 body {
-    margin: 0 auto;
-    width: 100%;
-    max-width: 80ch;
-    padding: 1rem;
-    line-height: 1.5;
-}
-
-* {
-    box-sizing: border-box;
-}
-
-h1 {
-    margin: 1rem 0;
-    font-size: 2.5rem;
-}
-
-/* nav styles */
-
-.hamburger {
-    padding-right: 20px;
-    cursor: pointer;
-}
-
-.hamburger .line {
-    display: block;
-    width: 40px;
-    height: 5px;
-    margin-bottom: 10px;
-    background-color: #ff9776;
-}
-
-.nav-links {
-    width: 100%;
-    top: 5rem;
-    left: 48px;
-    background-color: #ff9776;
-    /* display: none; */
     margin: 0;
+    font-size: 1.6rem;
 }
 
-.nav-links a {
+/* Sidebar / Navigation */
+#sidebar {
+    /* Attach to left */
     display: block;
-    text-align: center;
-    padding: 10px 0;
-    text-decoration: none;
-    font-size: 1.2rem;
-    font-weight: bold;
-    text-transform: uppercase;
-}
-
-.nav-links a:hover, a:focus {
-    background-color: #ff9776;
-}
-
-.expanded {
-    display: none;
-}
-
-/* dark theme */
-
-.dark body {
-    background-color: #0d0950;
-    color: #fff;
-}
-
-.dark .nav-links a {
-    color: #fff;
-}
-
-
-@media screen and (min-width: 636px) {
-    .nav-links {
-        margin-left: 5em;
-        display: block;
-        position: static;
-        width: auto;
-        background: none;
-    }
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
     
-    .nav-links a {
-        display: inline-block;
-        padding: 15px 20px;
-    }
-
-    .hamburger {
-        display: none;
-    }
+    width: var(--sidebar-width);
+    background-color: var(--sidebar-bg);
+    
+    overscroll-behavior: contain;
 }
+
+#sidebar-scroll-fix {
+    /* Lets you scroll in the sidebar lol */
+    overflow-y: auto;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+#sidebar ul {
+    padding-left: 20px;
+}
+
+#sidebar a {
+    color: var(--fg);
+    text-decoration: none;
+}
+
+#sidebar .current-page {
+    color: var(--sidebar-current-page)
+}
+
+/* Main page styles */
+
+main {
+    margin: 0 auto;
+    padding: 0 15px;
+    max-width: var(--content-max-width);
+}
+
+
+/*
+@media screen and (min-width: 636px) {
+    
+}
+*/

@@ -1,11 +1,50 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import Greeting from '../components/Greeting.svelte';
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Greeting from "../components/Greeting.svelte";
 
 const pageTitle: string = "Home Page";
+const pageDescription =
+	"Take a dive into Tanner's portfolio, full of wonderful and wacky things.";
 ---
 
-<BaseLayout pageTitle={pageTitle}>
-	<h2>My awesome blog subtitle</h2>
-	<Greeting client:load messages={["Hi", "Hello", "Howdy", "Hey there"]} />
+<BaseLayout pageTitle={pageTitle} pageDescription={pageDescription}>
+	<h1>{pageTitle}</h1>
+	<h2>portHFolio</h2>
+	<Greeting
+		client:load
+		messages={[
+			"Hi",
+			"Hello",
+			"Howdy",
+			"Hey there",
+			"This is an example reactive component",
+		]}
+	/>
+	<p>
+		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+		veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+		commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+		velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+		occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+		mollit anim id est laborum.
+	</p>
+	<p>
+		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+		veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+		commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+		velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+		occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+		mollit anim id est laborum.
+	</p>
+	<p>
+		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+		veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+		commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+		velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+		occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+		mollit anim id est laborum.
+	</p>
 </BaseLayout>

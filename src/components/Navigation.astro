@@ -1,6 +1,40 @@
-<div class="nav-links">
-    <a href="/">Home</a>
-    <a href="/about/">About</a>
-    <a href="/blog/">Blog</a>
-    <a href="/tags/">Tags</a>
-</div>
+---
+const base = import.meta.env.BASE_URL;
+
+// Note to future self:
+// If you want to exclude folders from the navigation, replace * with !()
+// And specify the folders like so:  `!(folder1|folder2)`
+const posts = await Astro.glob("../pages/*/!(index).*");
+const sections = await Astro.glob("../pages/*/index.*");
+
+// Right now it only supports a depth of 1 folder, but unless I need it,
+// I consider adding more depth unnecessary work and maintenance for me
+---
+
+<nav id="sidebar">
+  <div id="sidebar-scroll-fix">
+    <ul>
+      <li><a href={import.meta.env.BASE_URL}>Home</a></li>
+      {sections.map((section) =>
+        <li>
+          <!-- Section -->
+          <a class="section" href={section.url}>
+            {section.title || section.url}
+          </a>
+          <ul>
+            {posts
+              .filter((post) => post.url.includes(section.url))
+              .map((post) =>
+                <li>
+                  <a class="page" href={post.url}>
+                    {post.frontmatter.title || post.url}
+                  </a>
+                </li>
+              )
+            }
+          </ul>
+        </li>
+      )}
+    </ul>
+  </div>
+</nav>
